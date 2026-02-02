@@ -1,0 +1,229 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kanyarat 💖</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff4d6d, #ff8fa3, #ffd6e0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ---------- Floating romantic hearts ---------- */
+.heart {
+  position: absolute;
+  font-size: 18px;
+  color: rgba(255,255,255,0.45);
+  animation: floatUp 10s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(1); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-20vh) scale(1.4); opacity: 0; }
+}
+
+/* ---------- Glass card ---------- */
+.card {
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(16px);
+  border-radius: 28px;
+  padding: 42px 32px;
+  text-align: center;
+  width: 90%;
+  max-width: 350px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  animation: fadeIn 1s ease;
+  z-index: 5;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+h1 {
+  color: #fff;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  position: relative;
+  height: 120px;
+}
+
+button {
+  border: none;
+  border-radius: 40px;
+  font-size: 18px;
+  padding: 14px 30px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+#yesBtn {
+  background: linear-gradient(135deg, #ff2e63, #ff5c8a);
+  color: #fff;
+  box-shadow: 0 12px 25px rgba(255,46,99,0.5);
+}
+
+#noBtn {
+  background: rgba(255,255,255,0.9);
+  color: #333;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+}
+
+/* ---------- Walking cat (realistic slow) ---------- */
+.walking-cat {
+  position: absolute;
+  bottom: 8px;
+  left: -100px;
+  font-size: 42px;
+  animation: walkCat 18s linear infinite;
+  opacity: 0.85;
+}
+
+@keyframes walkCat {
+  0%   { left: -100px; transform: scaleX(1); }
+  100% { left: 110vw; transform: scaleX(1); }
+}
+
+/* ---------- Loving cats animation ---------- */
+.love-cats {
+  display: flex;
+  gap: 40px;
+  font-size: 70px;
+  animation: catsCloser 3s ease forwards;
+}
+
+@keyframes catsCloser {
+  from { gap: 80px; }
+  to { gap: 10px; }
+}
+
+.tail {
+  animation: tailMove 1.8s ease-in-out infinite;
+}
+
+@keyframes tailMove {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(8deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.pulse-heart {
+  font-size: 40px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.7; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<script>
+for (let i = 0; i < 12; i++) {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = "❤";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDelay = Math.random() * 6 + "s";
+  document.body.appendChild(h);
+}
+</script>
+
+<!-- Walking cat -->
+<div class="walking-cat">🐈‍⬛</div>
+
+<div class="card">
+  <h1>Kanyarat 💕</h1>
+  <p>Will you be my Valentine?</p>
+
+  <div class="buttons">
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 🙈</button>
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+function moveNo() {
+  const area = document.querySelector(".buttons");
+  const r = area.getBoundingClientRect();
+
+  noBtn.style.left = Math.random() * (r.width - noBtn.offsetWidth) + "px";
+  noBtn.style.top = Math.random() * (r.height - noBtn.offsetHeight) + "px";
+  noBtn.style.bottom = "auto";
+
+  let size = parseFloat(getComputedStyle(yesBtn).fontSize);
+  yesBtn.style.fontSize = (size + 2) + "px";
+  yesBtn.style.padding = "16px 42px";
+}
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+
+yesBtn.addEventListener("click", () => {
+  document.body.innerHTML = `
+    <div style="
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      background:linear-gradient(135deg,#ff4d6d,#ff8fa3);
+      color:white;
+      text-align:center;
+      padding:20px;
+    ">
+      <h1 style="font-size:32px;">Kanyarat 💖</h1>
+
+      <div class="love-cats">
+        <div class="tail">🐈</div>
+        <div class="pulse-heart">❤</div>
+        <div class="tail">🐈‍⬛</div>
+      </div>
+
+      <p style="font-size:18px; max-width:320px; margin-top:25px;">
+        From this moment on, my heart chooses you -- every day, every season.<br>
+        I don't want a perfect love… I want **us** 🤍
+      </p>
+
+      <p style="opacity:0.9;">Love you, always 🌹</p>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
